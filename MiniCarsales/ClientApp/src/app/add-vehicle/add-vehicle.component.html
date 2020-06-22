@@ -1,0 +1,44 @@
+<form [formGroup]="vehicleForm" class="border border-light p-5" (ngSubmit)="onClickSubmit()">
+  <p id="header" class="text-center text-capitalize h4 mb-4">Add {{type}}</p>
+  <div class="form-group">
+    <label for="make">Make</label>
+    <input class="form-control mb-4" type="text" id="make" name="make" formControlName="make">
+    <div *ngIf="(vehicleForm.controls['make'].dirty || vehicleForm.controls['make'].touched) && vehicleForm.controls['make'].invalid"
+         class="alert alert-danger">
+      <div *ngIf="vehicleForm.controls['make'].errors.required">
+        Make is required.
+      </div>
+      <div *ngIf="!vehicleForm.controls['make'].errors.required">
+        Make must be equal to or less than 50 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="model">Model</label>
+    <input class="form-control mb-4" type="text" id="model" name="model" formControlName="model">
+    <div *ngIf="(vehicleForm.controls['model'].dirty || vehicleForm.controls['model'].touched) && vehicleForm.controls['model'].invalid"
+         class="alert alert-danger">
+      <div *ngIf="vehicleForm.controls['model'].errors.required">
+        Model is required.
+      </div>
+      <div *ngIf="!vehicleForm.controls['make'].errors.required">
+        Model must be equal to or less than 50 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="engine">Engine</label>
+    <input class="form-control mb-4" type="text" id="engine" name="engine" formControlName="engine">
+    <div *ngIf="(vehicleForm.controls['engine'].dirty || vehicleForm.controls['engine'].touched) && vehicleForm.controls['engine'].invalid"
+         class="alert alert-danger">
+      <div *ngIf="vehicleForm.controls['engine'].errors.required">
+        Engine is required.
+      </div>
+      <div *ngIf="!vehicleForm.controls['make'].errors.required">
+        Engine must be equal to or less than 40 characters long.
+      </div>
+    </div>
+  </div>
+  <app-add-car *ngIf="type=='car'" [vehicleForm]="vehicleForm"></app-add-car>
+  <button type="submit" class="btn btn-primary" [disabled]="vehicleForm.invalid" >Submit</button>
+</form>

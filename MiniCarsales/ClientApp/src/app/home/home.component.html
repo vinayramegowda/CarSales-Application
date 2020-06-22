@@ -1,0 +1,27 @@
+<h1 id="tableLabel">Cars</h1>
+
+<p *ngIf="!cars"><em>Loading Mini CarSales Application...</em></p>
+<p *ngIf="cars && cars.length === 0"><em>Add Vehicle using "Add Vehicle" dropdown"</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="cars && cars.length > 0">
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Engine</th>
+      <th>Body Type</th>
+      <th>Number of Wheels</th>
+      <th>Number of Doors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of cars">
+      <td>{{ car.make }}</td>
+      <td>{{ car.model }}</td>
+      <td>{{ car.engine }}</td>
+      <td>{{ car.carBodyType }}</td>
+      <td>{{ car.numberOfWheels }}</td>
+      <td>{{ car.numberOfDoors }}</td>
+    </tr>
+  </tbody>
+</table>
